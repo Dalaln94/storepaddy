@@ -3,8 +3,21 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:search]
+      @items = Item.search(params[:search]).order("created_at DESC")
+
+    else
+      @items = Item.order("created_at DESC")
+    end
   end
+
+  def search
+  if params[:query]
+    @items = Item.search(params[:query])
+  else
+    @items = []
+  end
+end
 
   # GET /users/1
   # GET /users/1.json
@@ -26,6 +39,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @user }
+
+    end
   end
 
   # POST /users

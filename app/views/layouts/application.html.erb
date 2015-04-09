@@ -27,8 +27,7 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<head>
-</head>
+
 <body>
 
 <!-- Sidebar -->
@@ -76,15 +75,15 @@
         </li>
 
         <li>
-          <a href="/restaurants/">Restaurants</a>
+          <a href="/items/">Items</a>
           <ul class="sub-menu"></ul>
         </li>
    
         <% if @current_user.present? %>
             <% if @current_user.admin? %>
                 <li>
-                  <%= link_to 'New Restaurant', new_restaurant_path %>
-                  <%= link_to 'New Home Catering', new_catering_path %>
+                  <%= link_to 'New Item', new_item_path %>
+                  <%= link_to 'History of Customers' %>
                 </li>
             <% end %>
         <% end %>
@@ -115,7 +114,7 @@
       </div>
     </div>
     <hr>
-    <%= yield %>
+  
   </div>
 
 
